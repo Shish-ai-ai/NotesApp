@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NotesApp</string>
+    <string name="notes">Notes</string>
+    <string name="email" />
+    <string name="password" />
+    <string name="title">Title</string>
+</resources>

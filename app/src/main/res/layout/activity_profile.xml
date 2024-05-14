@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="308dp"
+        android:layout_height="256dp"
+        android:layout_marginStart="134dp"
+
+        android:layout_marginTop="10dp"
+        android:text="Profile"
+        android:textColor="#000"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="372dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:text="Email: "
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center"
+
+        android:text="Выйти из аккаунта" />
+
+</LinearLayout>
