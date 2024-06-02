@@ -2,6 +2,7 @@ package com.example.notesapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         textViewEmail = findViewById(R.id.textViewEmail);
         buttonLogout = findViewById(R.id.buttonLogout);
+
+        ImageButton backButton = findViewById(R.id.backbtn);
+        backButton.setOnClickListener(v -> finish());
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

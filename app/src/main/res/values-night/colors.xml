@@ -1,0 +1,8 @@
+<resources>
+    <color name="orange">#FF9800</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="statusBarColorDark">#FF9800</color>
+    <color name="backgroundLight">#FFFFFF</color> <!-- This will be overridden, but needs to be declared -->
+    <color name="backgroundDark">#121212</color>
+</resources>

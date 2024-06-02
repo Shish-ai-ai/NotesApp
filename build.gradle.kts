@@ -6,10 +6,10 @@ plugins {
 buildscript {
     repositories {
         google()
-        mavenCentral()  // Убедитесь, что Maven Central доступен, так как Realm распространяется через него
+        mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:8.1.0")  // Замените на актуальную версию вашего Android Gradle Plugin
-        classpath("io.realm:realm-gradle-plugin:10.18.0")  // Замените на последнюю версию Realm
+        classpath("com.android.tools.build:gradle:8.1.0")
+
     }
 }

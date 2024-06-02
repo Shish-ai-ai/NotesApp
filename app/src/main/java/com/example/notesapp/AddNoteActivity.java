@@ -1,8 +1,6 @@
 package com.example.notesapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import io.realm.Realm;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,8 +8,14 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.notesapp.model.Note;
+import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class AddNoteActivity extends AppCompatActivity {
+
+    private CollectionReference notesRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +26,8 @@ public class AddNoteActivity extends AppCompatActivity {
         EditText descriptionInput = findViewById(R.id.descriptioninput);
         ImageButton saveBtn = findViewById(R.id.savebtn);
 
-
-        Realm.init(getApplicationContext());
-        Realm realm = Realm.getDefaultInstance();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        notesRef = FirebaseFirestore.getInstance().collection("notes").document(userId).collection("userNotes");
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,25 +35,19 @@ public class AddNoteActivity extends AppCompatActivity {
                 String title = titleInput.getText().toString();
                 String description = descriptionInput.getText().toString();
                 if (!title.isEmpty() || !description.isEmpty()) {
-                    // Один из полей не пустой, можно сохранить заметку
-                    long createdTime = System.currentTimeMillis();
+                    Timestamp createdTime = Timestamp.now();
+                    String noteId = notesRef.document().getId();
+                    Note newNote = new Note(noteId, title, description, createdTime);
 
-                    realm.beginTransaction();
-                    Note note = realm.createObject(Note.class);
-                    note.setTitle(title);
-                    note.setDescription(description);
-                    note.setCreatedTime(createdTime);
-                    realm.commitTransaction();
+                    // Сохранение новой заметки в Firestore
+                    notesRef.document(noteId).set(newNote);
 
                     Toast.makeText(getApplicationContext(), "Note saved", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    // Оба поля пусты, активность закрывается без сохранения
                     finish();
                 }
             }
         });
-
-
     }
 }

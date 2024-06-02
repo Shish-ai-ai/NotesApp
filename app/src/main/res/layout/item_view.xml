@@ -25,7 +25,7 @@
         android:textSize="16sp"
         android:lines="1"
         android:ellipsize="end"
-        tools:text="My long long long descrption"/>
+        tools:text="My long long long description"/>
 
     <TextView
         android:layout_width="match_parent"
